@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import path from "path";
 import ejsMate from "ejs-mate";
 import { fileURLToPath } from "url";
@@ -13,13 +12,6 @@ import MongoStore from "connect-mongo";
 
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-  })
-);
 
 app.engine("ejs", ejsMate);
 
@@ -55,6 +47,10 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.reject = req.flash("reject");
   next();
+});
+
+app.get("/", (req, res) => {
+  res.send("Ab Home Page Banana Padega Kya ?");
 });
 
 // routes import

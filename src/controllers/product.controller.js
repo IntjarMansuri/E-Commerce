@@ -14,8 +14,6 @@ const getAllProducts = asyncHandler(async (req, res) => {
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
-    // const { name, description, price, maxRetailPrice, category, images } =
-    //   req.body;
     await Product.create({ ...req.body, author: req.user._id });
 
     req.flash("success", "Product added succesfully!");
