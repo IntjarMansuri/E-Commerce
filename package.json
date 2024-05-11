@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --experimental-modules -r dotenv/config src/index.js"
+    "start": "nodemon --experimental-modules -r dotenv/config src/index.js"
   },
   "author": "Intjar Mansuri",
   "license": "MIT",
