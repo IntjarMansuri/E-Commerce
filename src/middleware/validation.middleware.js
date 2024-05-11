@@ -1,4 +1,4 @@
-import { productSchema, reviewSchema } from "../productValidation.js";
+import { productSchema, reviewSchema } from "../utils/productValidation.js";
 
 const validateProduct = (req, res, next) => {
   const { name, description, price, maxRetailPrice, category, images } =

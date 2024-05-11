@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Ab Home Page Banana Padega Kya ?");
+  res.render("home");
 });
 
 // routes import
