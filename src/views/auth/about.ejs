@@ -1,0 +1,111 @@
+<% layout('layouts/boilerplate') -%>
+<div class="container min-h-screen mt-12">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 pt-20">
+    <div class="px-6 py-8 bg-white rounded-lg shadow-md text-center md:mt-0">
+      <h2 class="text-4xl font-bold mb-4">Your One-Stop Destination</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        Shopify E-commerce is your one-stop destination for all your online
+        shopping needs. With a diverse range of products from top-rated sellers,
+        we ensure that you find exactly what you're looking for.
+      </p>
+      <p class="text-lg leading-relaxed mb-4">
+        Whether you're searching for fashion, electronics, home goods, or
+        accessories, we've got it all covered. Our platform offers a seamless
+        shopping experience with secure transactions and reliable sellers,
+        giving you peace of mind every time you shop.
+      </p>
+    </div>
+    <div
+      class="px-6 py-8 bg-white rounded-lg shadow-md text-center mt-8 md:mt-0"
+    >
+      <h2 class="text-4xl font-bold mb-4">Wide Range of Products</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        From fashion to electronics, home goods to accessories, we've got it all
+        covered. Our platform offers a diverse range of products to cater to
+        your every need. Whether you're looking for the latest trends or
+        everyday essentials, you'll find them all here.
+      </p>
+      <p class="text-lg leading-relaxed mb-4">
+        With secure transactions and reliable sellers, you can shop with
+        confidence on Shopify E-commerce. Join our community today and
+        experience the convenience of online shopping like never before!
+      </p>
+    </div>
+    <div
+      class="px-6 py-8 bg-white rounded-lg shadow-md text-center mt-8 md:mt-0"
+    >
+      <h2 class="text-4xl font-bold mb-4">Join Our Community</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        Join our growing community of shoppers and sellers today! Whether you're
+        a buyer looking for the best deals or a seller wanting to reach a wider
+        audience, Shopify E-commerce is the perfect platform for you.
+      </p>
+      <p class="text-lg leading-relaxed mb-4">
+        With easy navigation, secure transactions, and reliable customer
+        support, we ensure a hassle-free shopping experience for all our users.
+        Join us now and be a part of the future of online shopping!
+      </p>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 px-12 mb-12">
+    <div class="shadow-md p-12 rounded-lg" id="contact-us">
+      <h2 class="text-3xl font-bold mb-4 text-center">Contact Us</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        Have any questions or concerns? Feel free to contact us using the form
+        below. We'll get back to you as soon as possible.
+      </p>
+      <form action="" method="">
+        <div class="mb-4">
+          <label for="email" class="block text-lg mb-2">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-lg mb-2">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="shadow-md p-12 rounded-lg">
+      <h2 class="text-3xl font-bold mb-4 text-center">Terms and Conditions</h2>
+      <ul class="list-disc pl-8">
+        <li class="text-lg leading-relaxed mb-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </li>
+        <li class="text-lg leading-relaxed mb-2">
+          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </li>
+        <li class="text-lg leading-relaxed mb-2">
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </li>
+        <li class="text-lg leading-relaxed mb-2">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur.
+        </li>
+        <li class="text-lg leading-relaxed mb-2">
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          officia deserunt mollit anim id est laborum.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<footer><%- include('../partials/footer') %></footer>

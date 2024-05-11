@@ -1,0 +1,152 @@
+<% layout("layouts/boilerplate") %> <%- include('../partials/flash') %>
+<div class="container flex flex-col lg:flex-row mt-12">
+  <div class="w-full lg:w-1/2 p-10 flex flex-col border-r">
+    <div class="flex justify-center items-center h-[90%]">
+      <img
+        src="<%= product.images %>"
+        alt="<%= product.name %>"
+        class="m-4 h-[85%] max-w-md"
+      />
+    </div>
+  </div>
+  <div class="w-full lg:w-1/2 p-10 flex flex-col">
+    <div class="flex flex-col space-y-3">
+      <div>
+        <h1 class="text-gray-900 text-xl"><%= product.name %></h1>
+        <p class="text-gray-600"><%= product.description %></p>
+      </div>
+      <div class="flex border border-gray-500 rounded-md w-36 px-1">
+        <p class="mr-1 ml-1 border-r text-gray-500 text-lg font-semibold pr-2">
+          <%= product.avgRating %>
+          <i class="fa-solid fa-star text-[#90a955] text-md"> </i>
+        </p>
+        <p class="ml-1 text-lg text-gray-500 font-semibold">
+          <%= product.reviews.length %> Ratings
+        </p>
+      </div>
+      <hr />
+      <div>
+        <% if (product.maxRetailPrice && product.maxRetailPrice > product.price)
+        { %>
+        <span class="text-[#e5383b] text-2xl"
+          >-<%= Math.round(((product.maxRetailPrice - product.price) /
+          product.maxRetailPrice) * 100) %>%
+        </span>
+        <% } %>
+        <span class="text-gray-800 text-2xl font-semibold" id="product-price"
+          >₹ <%= product.price %></span
+        >
+        <p>
+          <% if (product.maxRetailPrice && product.maxRetailPrice >
+          product.price) { %><span class="text-gray-800 text-lg">M.R.P. </span>
+          <span class="text-gray-800 text-lg line-through"
+            >₹<%= product.maxRetailPrice %>
+          </span>
+          <% } %>
+        </p>
+        <p class="text-gray-500">Price inclusive of all taxes</p>
+      </div>
+      <div class="flex space-x-2 mt-5">
+        <form action="/api/user/<%= product._id %>/add" method="post">
+          <button
+            class="bg-[#f48c06] text-white font-semibold px-2 py-2 rounded-lg hover:bg-[#e85d04]"
+          >
+            Add to Cart
+          </button>
+        </form>
+        <button
+          class="bg-[#42a5f5] text-white font-semibold px-2 py-2 rounded-lg hover:bg-[#1e88e5]"
+          id="buy-btn"
+        >
+          Buy Now
+        </button>
+
+        <% if(currentUser && currentUser.role === "seller" && (product.author &&
+        product.author.equals(currentUser._id))) { %>
+        <a
+          href="/api/products/<%= product._id %>/edit"
+          class="bg-[#6c757d] text-white font-semibold px-2 py-2 rounded-lg hover:bg-[#495057]"
+        >
+          Update
+        </a>
+        <form
+          action="/api/products/<%= product._id %>?_method=Delete"
+          method="POST"
+        >
+          <button
+            class="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg hover:bg-red-700"
+          >
+            Delete
+          </button>
+        </form>
+        <% } %>
+      </div>
+      <hr />
+      <div class="flex flex-col space-y-2">
+        <h4 class="text-gray-700 font-bold text-lg">Review this product</h4>
+        <hr />
+        <form action="/api/products/<%= product._id %>/review" method="POST">
+          <div class="starability-basic mb-1">
+            <h5 class="text-gray-500 text-lg">Overall Rating</h5>
+            <input
+              type="radio"
+              id="no-rate"
+              class="input-no-rate"
+              name="rating"
+              value="0"
+              checked
+              aria-label="No rating."
+            />
+            <input type="radio" id="first-rate1" name="rating" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="rating" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="rating" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="rating" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="rating" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </div>
+          <div class="border rounded-md p-2 mt-4">
+            <textarea
+              name="comment"
+              id="comment"
+              rows="3"
+              placeholder="Share your thoughts with other customers..."
+              class="w-full resize-none focus:outline-none"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              class="px-4 py-2 bg-[#00a9e2] text-white font-semibold rounded-md hover:bg-[#007bba]"
+            >
+              Submit Review
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="container flex flex-col lg:flex-row">
+  <div class="w-full p-10 flex flex-col">
+    <h1 class="text-xl text-gray-800 font-bold mb-4">
+      Customer Reviews(<%= product.reviews.length %>)
+    </h1>
+    <div class="space-y-2">
+      <% for (let review of product.reviews) { %>
+      <div>
+        <p class="starability-result" data-rating="<%= review.rating %>">
+          Rated: <%= review.rating %>stars
+        </p>
+        <p class="text-[#212529] text-lg font-semibold">
+          <%= review.comment %>
+        </p>
+      </div>
+      <hr />
+      <% } %>
+    </div>
+  </div>
+</div>

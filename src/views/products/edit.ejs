@@ -1,0 +1,99 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="flex flex-col justify-center items-center mt-16">
+  <form action="/api/products/<%= product._id %>?_method=PATCH" method="POST">
+    <div
+      class="relative flex flex-col m-2 space-y-2 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-1"
+    >
+      <div class="flex flex-col w-full justify-center p-8 md:p-14">
+        <span class="mb-2 mr-20 text-3xl font-bold">Update Product</span>
+        <span class="font-light text-gray-400 mb-2">It's quick and easy</span>
+        <hr />
+        <div class="py-2">
+          <p class="mb-1 font-semibold">Product Name</p>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            id="name"
+            name="name"
+            placeholder="Enter product name here"
+            required
+            value="<%= product.name %>"
+          />
+        </div>
+        <div class="py-2">
+          <p class="mb-1 font-semibold">Product Description</p>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Enter Product Description"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            required
+            value="<%= product.description %>"
+          />
+        </div>
+        <div class="py-2">
+          <p class="mb-1 font-semibold">Price</p>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            placeholder="Enter Product Price"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            required
+            value="<%= product.price %>"
+          />
+        </div>
+        <div class="py-2">
+          <p class="mb-1 font-semibold">Max Retail Price</p>
+          <input
+            type="text"
+            id="maxRetailPrice"
+            name="maxRetailPrice"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Enter Max Retail Price"
+            required
+            value="<%= product.maxRetailPrice %>"
+          />
+        </div>
+        <div class="py-2">
+          <p class="mb-1 font-semibold">Images</p>
+          <input
+            type="text"
+            id="images"
+            name="images"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Enter Images Url"
+            required
+            value="<%= product.images %>"
+          />
+        </div>
+        <div class="py-2">
+          <p class="mb-1 font-semibold">Select Category</p>
+          <select
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            id="category"
+            name="category"
+            required
+          >
+            <option value="clothes">Clothes</option>
+            <option value="electronis">Electronics</option>
+            <option value="smartphones">Smartphones</option>
+            <option value="beauty">Beauty</option>
+            <option value="kitchen">Kitchen</option>
+            <option value="shoes">Shoes</option>
+          </select>
+        </div>
+        <div class="py-2">
+          <button
+            type="submit"
+            class="w-full bg-black text-white font-bold p-2 rounded-lg hover:bg-white hover:text-black hover:border hover:border-gray-300"
+          >
+            Save Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

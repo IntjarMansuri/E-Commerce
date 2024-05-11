@@ -1,0 +1,9 @@
+.fas.fa-heart {
+  color: #90a955;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+  width: 0px;
+}

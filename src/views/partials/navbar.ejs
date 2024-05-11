@@ -1,0 +1,93 @@
+<nav class="fixed top-0 left-0 right-0 shadow-md md:flex md:items-center z-10">
+  <div
+    class="container mx-auto flex justify-between items-center py-1 px-12 bg-[#90a955]"
+  >
+    <a class="flex items-center rounded-full p-3 bg-white">
+      <img
+        src="/images/logo.png"
+        alt="Logo"
+        class="w-12 md:w-10 h-12 md:h-10"
+      />
+    </a>
+
+    <% if (currentUser) { %>
+    <div
+      class="class=mx-4 my-6 md:my-0 p-1 border-b border-white bg-[#90a955] text-[#4f772d]"
+    >
+      <p class="text-lg font-bold mx-5">
+        <i class="fa-regular fa-user text-lg mr-2 text-white"></i>Hello, <%=
+        currentUser.username %>!
+      </p>
+    </div>
+    <% } %>
+
+    <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+      <i class="fa-solid fa-bars" name="menu" onclick="Menu(this)"></i>
+    </span>
+
+    <ul
+      class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-[#90a955] right-0 md:w-auto md:py-0 py-4 md:opacity-100 opacity-0 top-[-400px]"
+    >
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/products" class="text-lg font-bold"> Home </a>
+      </li>
+
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/about" class="text-lg font-bold">About Us</a>
+      </li>
+
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/about#contact-us" class="text-lg font-bold">Contact Us</a>
+      </li>
+
+      <% if (currentUser && currentUser.role === 'seller') { %>
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/products/new" class="text-lg font-bold">Add Product</a>
+      </li>
+      <% } %> <% if (!currentUser) { %>
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/user/login" class="text-lg font-bold">Login</a>
+      </li>
+      <% } else { %>
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/user/cart" class="text-lg font-bold">
+          <i class="fa-solid fa-cart-shopping"></i
+          ><sup class="text-sm text-[#d00000]"
+            ><%= currentUser.cart.length %></sup
+          >
+        </a>
+      </li>
+      <li
+        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
+      >
+        <a href="/api/user/logout" class="text-lg font-bold">Logout</a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  function Menu(e) {
+    let list = document.querySelector("ul");
+    e.name === "menu"
+      ? ((e.name = "close"),
+        list.classList.add("top-[80px]"),
+        list.classList.add("opacity-100"))
+      : ((e.name = "menu"),
+        list.classList.remove("top-[80px]"),
+        list.classList.remove("opacity-100"));
+  }
+</script>
