@@ -10,102 +10,81 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
-    <nav
-      class="fixed top-0 left-0 right-0 shadow-md md:flex md:items-center z-10"
-    >
-      <div
-        class="container mx-auto flex justify-between items-center py-1 px-12 bg-[#90a955]"
-      >
-        <a class="flex items-center rounded-full p-3 bg-white">
-          <img
-            src="/images/logo.png"
-            alt="Logo"
-            class="w-12 md:w-10 h-12 md:h-10"
-          />
-        </a>
+  <body class="bg-[#00afb9]">
+    <%- include('./partials/navbar') %>
 
-        <% if (currentUser) { %>
-        <div
-          class="class=mx-4 my-6 md:my-0 p-1 border-b border-white bg-[#90a955] text-[#4f772d]"
-        >
-          <p class="text-lg font-bold mx-5">
-            <i class="fa-regular fa-user text-lg mr-2 text-white"></i>Hello, <%=
-            currentUser.username %>!
-          </p>
-        </div>
-        <% } %>
-
-        <span class="text-3xl cursor-pointer mx-2 md:hidden block">
-          <i class="fa-solid fa-bars" name="menu" onclick="Menu(this)"></i>
-        </span>
-
-        <ul
-          class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-[#90a955] right-0 md:w-auto md:py-0 py-4 md:opacity-100 opacity-0 top-[-400px]"
-        >
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/products" class="text-lg font-bold"> Home </a>
-          </li>
-
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/about" class="text-lg font-bold">About Us</a>
-          </li>
-
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/about#contact-us" class="text-lg font-bold"
-              >Contact Us</a
-            >
-          </li>
-
-          <% if (currentUser && currentUser.role === 'seller') { %>
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/products/new" class="text-lg font-bold"
-              >Add Product</a
-            >
-          </li>
-          <% } %> <% if (!currentUser) { %>
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/user/login" class="text-lg font-bold">Login</a>
-          </li>
-          <% } else { %>
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/user/cart" class="text-lg font-bold">
-              <i class="fa-solid fa-cart-shopping"></i
-              ><sup class="text-sm text-[#d00000]"
-                ><%= currentUser.cart.length %></sup
-              >
-            </a>
-          </li>
-          <li
-            class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-          >
-            <a href="/api/user/logout" class="text-lg font-bold">Logout</a>
-          </li>
-          <% } %>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="flex justify-center items-center mt-40">
-      <div class="text-center">
-        <h1 class="text-2xl md:text-4xl font-bold mb-4 md:p-10">
+    <div class="min-h-screen flex flex-col justify-center items-center mb-10">
+      <div class="mt-20 mb-5 text-center text-white">
+        <h1 class="text-2xl md:text-4xl font-bold">
           Welcome to My Shopify Store
         </h1>
-        <p class="text-lg md:text-xl mb-8">
-          Discover amazing products and shop with ease!
-        </p>
+      </div>
+      <div class="flex flex-wrap justify-center">
+        <div class="bg-white rounded-lg shadow-lg m-4 max-w-xs">
+          <img
+            src="https://media.istockphoto.com/id/618943982/photo/shopping-girls-are-laughing-on-the-escalator-in-mall.jpg?s=612x612&w=0&k=20&c=UVnrXDMYjbS7K4h7IBRW95EwKKX_j4dwEqY6nEjry1I="
+            alt="Product 1"
+            class="rounded-t-lg"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg text-gray-800">Fashion Shopping</p>
+            <p class="text-sm text-gray-600">
+              Discover the latest fashion trends and shop for your favorite
+              clothing items.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg m-4 max-w-xs">
+          <img
+            src="https://media.istockphoto.com/id/487163490/photo/fashion-smiling-hipster-woman-having-fun-taking-picture-self-por.jpg?s=612x612&w=0&k=20&c=PzBLl8nG-teQX37Ho0wzKdmjMRi0EwII-1UQSIEm0aI="
+            alt="Product 2"
+            class="rounded-t-lg"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg text-gray-800">
+              Mobile & Beauty Products
+            </p>
+            <p class="text-sm text-gray-600">
+              Explore a wide range of mobile devices and beauty products for all
+              your needs.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg m-4 max-w-xs">
+          <img
+            src="https://media.istockphoto.com/id/1362508125/vector/modern-3d-illustration-of-online-shopping.jpg?s=612x612&w=0&k=20&c=FLd82wTjDmo0HiFzuIKCSaNntSPH8O1sZ_OnSwmvS74="
+            alt="Product 3"
+            class="rounded-t-lg"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg text-gray-800">
+              Shopify E-commerce
+            </p>
+            <p class="text-sm text-gray-600">
+              Build your online store with Shopify and start selling products
+              globally.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg m-4 max-w-xs">
+          <img
+            src="https://media.istockphoto.com/id/1087865474/vector/secure-online-shopping-protected-payments-using-credit-card-concept.jpg?s=612x612&w=0&k=20&c=uQOFM-ctCmSRip76NJ398ZZFE2_Ymi-ixhyYAAnNNXE="
+            alt="Product 4"
+            class="rounded-t-lg"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg text-gray-800">
+              Secure Online Payment with Razorpay
+            </p>
+            <p class="text-sm text-gray-600">
+              Make secure online payments using Razorpay and protect your
+              transactions.
+            </p>
+          </div>
+        </div>
+        <!-- Add more cards if needed -->
+      </div>
+      <div class="mt-8 text-center text-white">
         <a
           href="/api/products"
           class="text-lg md:text-xl text-[#90a955] font-semibold bg-white px-6 py-3 rounded-full hover:bg-[#90a955] hover:text-white transition duration-300 ease-in-out border border-[#90a955]"
@@ -114,17 +93,6 @@
       </div>
     </div>
 
-    <script>
-      function Menu(e) {
-        let list = document.querySelector("ul");
-        e.name === "menu"
-          ? ((e.name = "close"),
-            list.classList.add("top-[80px]"),
-            list.classList.add("opacity-100"))
-          : ((e.name = "menu"),
-            list.classList.remove("top-[80px]"),
-            list.classList.remove("opacity-100"));
-      }
-    </script>
+    <footer><%- include('./partials/footer') %></footer>
   </body>
 </html>

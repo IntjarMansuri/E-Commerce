@@ -1,11 +1,11 @@
 <% layout("layouts/boilerplate") %> <%- include('../partials/flash') %>
 
-<div class="md:container md:mx-auto p-12 mt-16 bg-white">
+<div class="md:mx-auto p-4 sm:p-12 mt-16 bg-white">
   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
     <% for (let product of products) { %>
 
     <div
-      class="flex flex-col items-center p-2 bg-white rounded-lg shadow-md transition-all duration-300 hover:transform hover:-translate-y-2 relative"
+      class="flex flex-col items-center px-4 py-2 bg-white rounded-lg shadow-md transition-all duration-300 hover:transform hover:-translate-y-2 relative"
     >
       <div class="btn absolute top-2 right-2">
         <% if (currentUser && currentUser.wishlist.includes(product._id)) { %>
@@ -26,11 +26,11 @@
         src="<%= product.images[0] %>"
         alt="<%= product.name %>"
         class="card w-fixed h-fixed object-cover"
-        style="max-width: 330px; max-height: 285px"
+        style="max-width: 280px; max-height: 220px"
         data-product-id="<%= product._id %>"
       />
-      <div class="flex border border-gray-500 rounded-md w-32 px-1 mt-1">
-        <p class="mr-1 ml-1 border-r text-gray-500 text-md font-semibold pr-2">
+      <div class="flex border border-gray-500 rounded-md w-36 px-1 mt-1">
+        <p class="mx-1 border-r text-gray-500 text-md font-semibold pr-2">
           <%= product.avgRating %>
           <i class="fa-solid fa-star text-[#90a955] text-sm"> </i>
         </p>
@@ -38,12 +38,12 @@
           <%= product.reviews.length %> Ratings
         </p>
       </div>
-      <h2 class="text-xl font-bold text-gray-800 mt-2"><%= product.name %></h2>
+      <h2 class="text-lg font-bold text-gray-700 mt-2"><%= product.name %></h2>
 
-      <p class="text-gray-600 text-base mt-2 overflow-hidden line-clamp-2">
+      <p class="text-gray-500 text-base mt-2 overflow-hidden line-clamp-2">
         <%= product.description %>
       </p>
-      <div class="mt-auto">
+      <div class="mt-auto mt-2">
         <span class="text-[#212529] text-xl font-semibold"
           >₹<%= product.price %> <% if (product.maxRetailPrice &&
           product.maxRetailPrice > product.price) { %><span
@@ -60,7 +60,6 @@
           <% } %>
         </span>
       </div>
-      <div class="flex justify-between mt-2 gap-4"></div>
     </div>
     <% } %>
   </div>

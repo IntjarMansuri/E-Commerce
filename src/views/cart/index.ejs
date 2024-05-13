@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') -%>
 
-<div class="md:container md:mx-auto flex flex-col lg:mt-16 min-h-screen">
+<div class="md:container md:mx-auto flex flex-col mt-16 min-h-screen">
   <h1 class="text-3xl font-semibold p-5 text-center">
     🛒 Your Shopping Bag 🛍️
   </h1>
@@ -11,7 +11,7 @@
     No items in your cart.
   </div>
   <% } else { %>
-  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-8">
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-12">
     <% for(let item of user.cart){ %>
     <div
       class="flex flex-col lg:flex-row items-center justify-between bg-white shadow-lg rounded-lg mb-4"
@@ -27,12 +27,12 @@
       </div>
       <!-- Product Details -->
       <div class="w-full lg:w-3/2 p-4">
-        <div class="flex justify-between items-start mb-4">
+        <div class="flex justify-between items-start mb-2">
           <h2 class="text-xl font-semibold text-gray-800">
             <%= item.productId.name %>
           </h2>
           <!-- Remove Button -->
-          <div class="px-2 pb-4 text-3xl">
+          <div class="px-2 pb-2 text-xl">
             <form
               action="/api/user/<%= item.productId._id %>?_method=DELETE"
               method="post"
@@ -51,7 +51,7 @@
         <div class="flex items-center mb-2">
           <% if (item.productId.maxRetailPrice && item.productId.maxRetailPrice
           > item.productId.price) { %>
-          <span class="text-[#e5383b] mr-1">
+          <span class="text-[#e5383b] mr-1 text-xl">
             -<%= Math.round(((item.productId.maxRetailPrice -
             item.productId.price) / item.productId.maxRetailPrice) * 100)
             %>%</span
@@ -99,18 +99,24 @@
     <% } %>
   </div>
   <hr />
-  <div class="w-full p-6 md:px-8 flex flex-col">
+  <div class="w-full p-12 flex flex-col">
     <ul>
       <% for(let item of user.cart) {%>
-      <li>
+      <li class="mb-1">
         <p class="font-bold">Product Name : <%= item.productId.name %></p>
-        <p class="font-bold">Product Price: ₹<%= item.productId.price %></p>
-        <p class="font-bold">Quantity : <%= item.quantity %></p>
+        <p class="font-bold">
+          Product Price:
+          <span class="font-semibold">₹<%= item.productId.price %></span> x
+          <span class="font-semibold"><%= item.quantity %></span> =
+          <span class="text-red-600 font-semibold"
+            ><%= item.productId.price * item.quantity %></span
+          >
+        </p>
       </li>
       <hr />
       <% } %>
       <hr />
-      <li class="text-xl font-semibold" id="product-price">
+      <li class="text-xl font-semibold mt-2" id="product-price">
         Total Amount : ₹ <%= totalAmount %>
       </li>
     </ul>

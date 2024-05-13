@@ -28,10 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   await User.register(user, password);
 
-  req.flash(
-    "success",
-    "Welcome 🎉 You're all set to explore. Dive into your account and let the shopping begin!"
-  );
+  req.flash("success", "Welcome You're all set to explore.");
   res.redirect("/api/user/login");
 });
 
@@ -55,10 +52,7 @@ const loginUser = asyncHandler(async (req, res) => {
       return next(err);
     }
 
-    req.flash(
-      "success",
-      `Welcome back ${req.user.username}! We're thrilled to see you again. Happy shopping `
-    );
+    req.flash("success", `Welcome back ${req.user.username}! Happy shopping `);
     res.redirect("/api/products");
   });
 });
