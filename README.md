@@ -54,7 +54,7 @@ Once the application is running, you can access it.
 
 ## Live Demo
 
-Check out the live demo of the project [here](https://your-live-demo-link.com).
+Check out the live demo of the project [here](https://shopify-ecommerce-web-application.onrender.com).
 
 ## Screenshots
 
