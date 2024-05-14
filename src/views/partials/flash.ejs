@@ -4,14 +4,14 @@
   <!-- Success Alert Box -->
   <% if (success && success.length) { %>
   <div
-    class="alert bg-green-100 border border-green-300 text-green-700 px-4 py-3 w-96 rounded-md relative"
+    class="alert bg-green-100 border border-green-300 text-green-700 px-4 py-3 w-80 rounded-md relative"
   >
     <strong class="font-bold"><%= success %></strong>
     <button
       type="button"
       class="btn-close absolute right-1 top-1 py-2 px-3 ml-2"
     >
-      <i class="fa-solid fa-xmark text-black"></i>
+      <i class="fa-regular fa-circle-xmark text-black"></i>
     </button>
   </div>
   <% } %>
@@ -19,14 +19,14 @@
   <!-- Reject Alert Box -->
   <% if (reject && reject.length) { %>
   <div
-    class="alert bg-red-100 border border-red-300 text-red-700 px-4 py-3 w-96 rounded-md relative"
+    class="alert bg-red-100 border border-red-300 text-red-700 px-4 py-3 w-80 rounded-md relative"
   >
     <strong class="font-bold"><%= reject %></strong>
     <button
       type="button"
       class="btn-close absolute right-1 top-1 py-2 px-3 ml-2"
     >
-      <i class="fa-solid fa-xmark text-black"></i>
+      <i class="fa-regular fa-circle-xmark text-black"></i>
     </button>
   </div>
   <% } %>
