@@ -1,5 +1,5 @@
 <div
-  class="alert-container fixed top-0 left-0 w-full z-50 flex justify-center mt-20"
+  class="alert-container fixed top-20 left-0 w-full z-50 flex justify-center"
 >
   <!-- Success Alert Box -->
   <% if (success && success.length) { %>
@@ -9,7 +9,7 @@
     <strong class="font-bold"><%= success %></strong>
     <button
       type="button"
-      class="btn-close absolute right-1 top-1 py-2 px-3 ml-2 hover:border border-black rounded-md"
+      class="btn-close absolute right-1 top-1 py-2 px-3 ml-2"
     >
       <i class="fa-solid fa-xmark text-black"></i>
     </button>
@@ -24,7 +24,7 @@
     <strong class="font-bold"><%= reject %></strong>
     <button
       type="button"
-      class="btn-close absolute right-1 top-1 py-2 px-3 ml-2 hover:border border-black rounded-md"
+      class="btn-close absolute right-1 top-1 py-2 px-3 ml-2"
     >
       <i class="fa-solid fa-xmark text-black"></i>
     </button>

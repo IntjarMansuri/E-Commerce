@@ -52,12 +52,12 @@ const paymentVerify = asyncHandler(async (req, res) => {
       { paymentStatus: true }
     );
 
-    // res.json({ success: true, msg: "Payment succesfull!" });
     req.flash("success", "Payment Sucessful!");
   } else {
-    // res.json({ success: false, msg: "Not a valid payment" });
     req.flash("reject", "Not a valid payment!");
   }
+
+  res.redirect("back");
 });
 
 export { createOrder, paymentVerify };

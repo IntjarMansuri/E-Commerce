@@ -23,7 +23,6 @@ const createReview = asyncHandler(async (req, res) => {
     res.redirect("back");
   } catch (e) {
     req.flash("reject", "You need to login first!");
-    res.render("error", { error: e.message });
   }
 });
 
