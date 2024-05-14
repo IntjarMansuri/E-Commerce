@@ -56,8 +56,6 @@ const paymentVerify = asyncHandler(async (req, res) => {
   } else {
     req.flash("reject", "Not a valid payment!");
   }
-
-  res.redirect("back");
 });
 
 export { createOrder, paymentVerify };
