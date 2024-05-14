@@ -1,10 +1,10 @@
 <div
-  class="alert-container fixed top-20 left-0 w-full z-50 flex justify-center"
+  class="alert-container fixed top-20 left-0 w-full z-50 flex justify-center px-20"
 >
   <!-- Success Alert Box -->
   <% if (success && success.length) { %>
   <div
-    class="alert bg-green-100 border border-green-300 text-green-700 px-4 py-3 w-80 rounded-md relative"
+    class="alert bg-green-100 border border-green-300 text-green-700 px-4 py-3 w-full rounded-md relative"
   >
     <strong class="font-bold"><%= success %></strong>
     <button
@@ -19,7 +19,7 @@
   <!-- Reject Alert Box -->
   <% if (reject && reject.length) { %>
   <div
-    class="alert bg-red-100 border border-red-300 text-red-700 px-4 py-3 w-80 rounded-md relative"
+    class="alert bg-red-100 border border-red-300 text-red-700 px-4 py-3 w-full rounded-md relative"
   >
     <strong class="font-bold"><%= reject %></strong>
     <button
