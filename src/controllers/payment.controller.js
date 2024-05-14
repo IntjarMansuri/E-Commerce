@@ -34,27 +34,30 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 const paymentVerify = asyncHandler(async (req, res) => {
-  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
-    req.body;
+  try {
+    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
+      req.body;
 
-  const isValid = validatePaymentVerification(
-    {
-      order_id: razorpay_order_id,
-      payment_id: razorpay_payment_id,
-    },
-    razorpay_signature,
-    process.env.RAZORPAY_KEY_SECRET
-  );
-
-  if (isValid) {
-    await Order.findByIdAndUpdate(
-      { _id: razorpay_order_id },
-      { paymentStatus: true }
+    const isValid = validatePaymentVerification(
+      {
+        order_id: razorpay_order_id,
+        payment_id: razorpay_payment_id,
+      },
+      razorpay_signature,
+      process.env.RAZORPAY_KEY_SECRET
     );
 
-    req.flash("success", "Payment Sucessful!");
-  } else {
-    req.flash("reject", "Not a valid payment!");
+    if (isValid) {
+      await Order.findByIdAndUpdate(razorpay_order_id, { paymentStatus: true });
+
+      req.flash("success", "Payment Successful!");
+    } else {
+      req.flash("error", "Not a valid payment!");
+    }
+    res.redirect("back");
+  } catch (e) {
+    req.flash("error", e.message);
+    res.redirect("back");
   }
 });
 
