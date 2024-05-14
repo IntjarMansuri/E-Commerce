@@ -54,25 +54,27 @@ Once the application is running, you can access it.
 
 ## Live Demo
 
-Check out the live demo of the project [here](https://your-live-demo-link.com).
+Check out the live demo of the project [here](https://shopify-ecommerce-web-application.onrender.com).
 
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home.png)
+![Screenshot-1](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/79c27ea5-f748-46a8-8828-1611a6058451)
 
 ### Products Page
-![Products Page](screenshots/products.png)
+![Screenshot-2](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/21e453c2-3aa8-489e-86d9-b428b1b456fc)
 
 ### Login Page
-![Login Page](screenshots/login.png)
+![Screenshot-4](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/398a7fd5-9594-4afd-bc23-60455e629ab3)
 
 ### Signup Page
-![Signup Page](screenshots/signup.png)
+![Screenshot-3](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/ff214291-d8ce-4184-ba50-52ec8d9d0ce2)
 
 ### Cart Page
-![Cart Page](screenshots/cart.png)
+![Screenshot-5](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/00d96d55-7e1c-4aa7-b63f-7f4c29f09c24)
+
+### Show Page
+![Screenshot-6](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/15969889-f1a6-4794-8c95-29cdf124b9a2)
 
 ---
-
 Feel free to ask if you need any further changes or additions!
