@@ -18,7 +18,7 @@ const addCart = asyncHandler(async (req, res) => {
   }
 
   await user.save();
-  req.flash("success", "Item has been added to your cart successfully");
+  req.flash("success", "Item has been added to your cart");
   res.redirect("back");
 });
 
