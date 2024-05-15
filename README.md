@@ -74,7 +74,6 @@ Once the application is running, you can access it.
 ### Online Payment
 - Users can make payments through the integrated Stripe payment gateway.
 - During checkout, users will be prompted to enter their payment details securely.
-- Upon successful payment, the order is processed, and users receive a confirmation email.
 
 ## Live Demo
 
