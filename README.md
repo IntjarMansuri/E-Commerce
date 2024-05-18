@@ -2,8 +2,10 @@
 
 Shopify is an E-commerce web application that is fully responsive and designed to provide a seamless shopping experience. This application allows users to register as buyers or sellers, manage products, and perform secure transactions through an integrated payment gateway.
 
-## Key Features
+## Live Demo
+Check out the live demo of the project  **[Shopify](https://shopify-ecommerce-web-application.onrender.com).**
 
+## Key Features
 - **Role Management:** Users can register as buyers or sellers. Each role has distinct functionalities and views.
   
 - **Wishlist & Cart:** Users can add products to their wishlist and cart. They can manage their wishlist and cart, including adding, removing, and updating items.
@@ -21,7 +23,6 @@ Shopify is an E-commerce web application that is fully responsive and designed t
 - **Product Reviews:** Buyers can leave reviews and ratings for products they have purchased.
 
 ## Technologies Used
-
 - **Node.js:** The backend runtime environment providing scalability and efficiency.
   
 - **Express.js:** A robust web application framework for building scalable and maintainable applications.
@@ -39,7 +40,6 @@ Shopify is an E-commerce web application that is fully responsive and designed t
 - **Mongoose:** An elegant MongoDB object modeling tool for Node.js.
 
 ## Project Structure
-
 The project follows the MVC (Model-View-Controller) architecture for organized and maintainable code.
 
 - **Controllers:** Handle business logic and interact with models.
@@ -53,8 +53,6 @@ The project follows the MVC (Model-View-Controller) architecture for organized a
 - **Public:** Static assets like CSS, JavaScript, and images.
 
 ## Usage
-
-Once the application is running, you can access it. 
 
 ### Home Page
 - Browse through the products listed on the home page.
@@ -74,10 +72,6 @@ Once the application is running, you can access it.
 ### Online Payment
 - Users can make payments through the integrated Stripe payment gateway.
 - During checkout, users will be prompted to enter their payment details securely.
-
-## Live Demo
-
-Check out the live demo of the project  [Shopify](https://shopify-ecommerce-web-application.onrender.com).
 
 ## Screenshots
 
