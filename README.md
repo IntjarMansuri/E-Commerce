@@ -3,7 +3,7 @@
 I-MART is an E-commerce web application that is fully responsive and designed to provide a seamless shopping experience. This application allows users to register as buyers or sellers, manage products, and perform secure transactions through an integrated payment gateway.
 
 ## Live Demo
-Check out the live demo of the project 
+Check out the live demo of the project **https://i-mart-ecommerce-store-1-ch98.onrender.com/**
 
 ## Key Features
 - **Role Management:** Users can register as buyers or sellers. Each role has distinct functionalities and views.
