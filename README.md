@@ -1,6 +1,6 @@
-# Shopify - E Commerce
+# I-MART Ecommerce store
 
-Shopify is an E-commerce web application that is fully responsive and designed to provide a seamless shopping experience. This application allows users to register as buyers or sellers, manage products, and perform secure transactions through an integrated payment gateway.
+I-MART is an E-commerce web application that is fully responsive and designed to provide a seamless shopping experience. This application allows users to register as buyers or sellers, manage products, and perform secure transactions through an integrated payment gateway.
 
 ## Live Demo
 Check out the live demo of the project  **[Shopify](https://shopify-ecommerce-web-application.onrender.com).**
@@ -76,22 +76,17 @@ The project follows the MVC (Model-View-Controller) architecture for organized a
 ## Screenshots
 
 ### Home Page
-![Screenshot-1](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/79c27ea5-f748-46a8-8828-1611a6058451)
+![Screenshot (123)](https://github.com/user-attachments/assets/3d65f0d9-3d8a-423e-abaa-15a73deae0df)
 
 ### Products Page
-![Screenshot-2](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/21e453c2-3aa8-489e-86d9-b428b1b456fc)
-
-### Login Page
-![Screenshot-4](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/398a7fd5-9594-4afd-bc23-60455e629ab3)
-
-### Signup Page
-![Screenshot-3](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/ff214291-d8ce-4184-ba50-52ec8d9d0ce2)
-
-### Cart Page
-![Screenshot-5](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/00d96d55-7e1c-4aa7-b63f-7f4c29f09c24)
+![Screenshot (124)](https://github.com/user-attachments/assets/9a9d55a5-a7d9-4232-a149-333908d21a6a)
 
 ### Show Page
-![Screenshot-6](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/15969889-f1a6-4794-8c95-29cdf124b9a2)
+![Screenshot (125)](https://github.com/user-attachments/assets/fe59b212-dc9c-4d51-8362-53c62d6dfd8b)
+![Screenshot (126)](https://github.com/user-attachments/assets/1bb0df09-4734-493a-84cb-5a598d29778e)
+
+### Payment
+![Screenshot (129)](https://github.com/user-attachments/assets/46bf05af-6b0f-4470-b75c-51da4a7e296a)
 
 ---
 Feel free to ask if you need any further changes or additions!
