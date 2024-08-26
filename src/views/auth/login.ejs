@@ -1,53 +1,53 @@
 <% layout('layouts/boilerplate') -%> <%- include('../partials/flash') %>
 
-<div class="flex items-center justify-center min-h-screen bg-white">
-  <form action="/api/user/login" method="POST">
-    <div
-      class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
-    >
-      <div class="flex flex-col justify-center p-8 md:p-14">
-        <span class="mb-3 text-[#4f772d] text-3xl font-bold">Welcome Back</span>
-        <span class="font-light text-[#a7c957] mb-4"
+<div class="flex items-center justify-center min-h-screen bg-white p-6">
+  <div class="w-full sm:w-[30%] p-6 mx-auto shadow-xl rounded-md">
+    <form action="/api/user/login" method="POST">
+      <div class="flex flex-col justify-center border-b">
+        <span class="mb-3 text-[#3a5a40] text-3xl font-bold">Welcome Back</span>
+        <span class="font-medium text-[#3a5a40] mb-4"
           >Please enter your details</span
         >
-        <hr />
-        <div class="py-4">
-          <label for="email"></label>
-          <input
-            type="email"
-            class="w-full p-2 border border-[#31572c] rounded-sm placeholder:font-light placeholder:text-[#a7c957]"
-            placeholder="Enter your email address"
-            name="email"
-            id="email"
-            required
-          />
-        </div>
-        <div class="py-4">
-          <label for="password"></label>
-          <input
-            type="password"
-            class="w-full p-2 border border-[#31572c] rounded-sm placeholder:font-light placeholder:text-[#a7c957]"
-            placeholder="Enter your password"
-            name="password"
-            id="password"
-            required
-          />
-        </div>
+      </div>
+      <div class="py-4">
+        <label for="email"></label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+          placeholder="Enter your email address"
+          required
+        />
+      </div>
+      <div class="py-4">
+        <label for="password"></label>
+        <input
+          type="password"
+          class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+          placeholder="Enter your password"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <div>
         <button
           type="submit"
-          class="w-full bg-[#90a955] text-white font-bold p-2 mb-6 rounded-sm hover:bg-white hover:text-[#4f772d] hover:border hover:border-[#31572c]"
+          class="w-full px-6 py-2 text-white font-[500] bg-blue-600 hover:bg-blue-700 rounded-md border focus:border-blue-800"
         >
           Login
         </button>
-        <div class="text-center text-[#386641]">
-          Don't have an account?
-          <a
-            href="/api/user/register"
-            class="font-bold text-[#4f772d] hover:text-black"
-            >SignUp</a
-          >
-        </div>
       </div>
-    </div>
-  </form>
+
+      <div class="text-gray-600 py-4">
+        Don't have an account?
+        <a
+          href="/api/user/register"
+          class="text-red-600 text-[400] hover:text-blue-600"
+          >SignUp</a
+        >
+      </div>
+    </form>
+  </div>
 </div>

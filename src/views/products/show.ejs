@@ -1,29 +1,45 @@
 <% layout("layouts/boilerplate") %> <%- include('../partials/flash') %>
-<div class="container flex flex-col lg:flex-row mt-12">
-  <div class="w-full lg:w-1/2 p-10 flex flex-col lg:border-r">
-    <div class="flex justify-center items-center lg:max-h-full sm:max-h-36">
+<div class="container flex flex-col sm:flex-row mt-12">
+  <div class="w-full md:w-1/2 p-6 flex flex-col md:border-r">
+    <div class="flex justify-center items-center md:max-h-full">
       <img
         src="<%= product.images %>"
         alt="<%= product.name %>"
-        class="m-4 lg:max-h-full lg:w-96 sm:max-h-32 sm:w-32"
+        class="m-4 max-h-full w-96"
       />
     </div>
   </div>
-  <div class="w-full lg:w-1/2 p-10 flex flex-col">
+  <div class="w-full md:w-1/2 p-6 flex flex-col">
     <div class="flex flex-col space-y-3">
       <div>
         <h1 class="text-gray-900 font-semibold text-xl"><%= product.name %></h1>
         <p class="text-gray-600"><%= product.description %></p>
       </div>
-      <div class="flex border border-gray-500 rounded-md w-40 px-1">
-        <p class="mx-1 border-r text-gray-500 text-lg font-semibold pr-2">
+
+      <!-- Ratings Start Here -->
+      <div class="flex items-center">
+        <svg
+          class="w-4 h-4 text-yellow-300 me-1"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 22 20"
+        >
+          <path
+            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+          />
+        </svg>
+        <p class="ms-2 text-sm font-bold text-gray-900 dark:text-white">
           <%= product.avgRating %>
-          <i class="fa-solid fa-star text-[#90a955] text-md"> </i>
         </p>
-        <p class="ml-1 text-lg text-gray-500 font-semibold">
+        <span
+          class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"
+        ></span>
+        <p class="text-sm font-medium text-gray-900 dark:text-white">
           <%= product.reviews.length %> Ratings
         </p>
       </div>
+      <!-- Ratings End Here -->
       <hr />
       <div>
         <% if (product.maxRetailPrice && product.maxRetailPrice > product.price)
@@ -46,26 +62,29 @@
         </p>
         <p class="text-gray-500">Price inclusive of all taxes</p>
       </div>
-      <div class="flex space-x-2 mt-5">
-        <form action="/api/user/<%= product._id %>/add" method="post">
+
+      <div class="inline-flex rounded-sm space-x-2" role="group">
+        <form action="/api/user/<%= product._id %>/add" method="POST">
           <button
-            class="bg-[#f48c06] text-white font-semibold p-2 rounded-lg hover:bg-[#e85d04]"
+            type="button"
+            class="px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-gray-900 bg-[#FF9119] rounded-s-sm hover:bg-[#FF9119]/80 focus:z-1 focus:ring-1 focus:ring-[#FF9119]"
           >
             Add to Cart
           </button>
         </form>
+
         <button
-          class="bg-[#42a5f5] text-white font-semibold px-2 py-2 rounded-lg hover:bg-[#1e88e5]"
+          type="button"
           id="buy-btn"
+          class="px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-gray-900 bg-blue-400 hover:bg-blue-500 focus:z-1 focus:ring-1 focus:ring-blue-400"
         >
           Buy Now
         </button>
-
         <% if(currentUser && currentUser.role === "seller" && (product.author &&
         product.author.equals(currentUser._id))) { %>
         <a
           href="/api/products/<%= product._id %>/edit"
-          class="bg-[#6c757d] text-white font-semibold px-2 py-2 rounded-lg hover:bg-[#495057]"
+          class="px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-gray-900 bg-green-400 hover:bg-green-500 focus:z-1 focus:ring-1 focus:ring-green-400"
         >
           Update
         </a>
@@ -74,7 +93,8 @@
           method="POST"
         >
           <button
-            class="bg-red-500 text-white font-semibold px-2 py-2 rounded-lg hover:bg-red-700"
+            type="button"
+            class="px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-gray-900 bg-red-400 hover:bg-red-500 rounded-e-sm focus:z-11 focus:ring-1 focus:ring-red-400"
           >
             Delete
           </button>
@@ -108,49 +128,70 @@
             <input type="radio" id="first-rate5" name="rating" value="5" />
             <label for="first-rate5" title="Amazing">5 stars</label>
           </div>
-          <div class="border rounded-md p-2 mt-4">
-            <textarea
-              name="comment"
-              id="comment"
-              rows="3"
-              placeholder="Share your thoughts with other customers..."
-              class="w-full resize-none focus:outline-none"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              class="px-4 py-2 bg-[#00a9e2] text-white font-semibold rounded-md hover:bg-[#007bba]"
+          <div
+            class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
+          >
+            <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+              <label for="comment" class="sr-only">Your comment</label>
+              <textarea
+                id="comment"
+                name="comment"
+                rows="4"
+                class="w-full px-0 text-sm text-gray-900 bg-white dark:text-white dark:placeholder-gray-400 outline-none"
+                placeholder="Share your thoughts with other customers..."
+                required
+              >
+              </textarea>
+            </div>
+            <div
+              class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600"
             >
-              Submit Review
-            </button>
+              <button
+                type="submit"
+                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-md focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+              >
+                Post comment
+              </button>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-<hr />
-<div class="container flex flex-col lg:flex-row">
-  <div class="w-full p-10 flex flex-col">
+
+<div class="container flex flex-col sm:flex-row border-t">
+  <div class="w-full p-6 flex flex-col">
     <h1 class="text-xl text-gray-800 font-semibold mb-4">
       Customer Reviews(<%= product.reviews.length %>)
     </h1>
-    <div class="space-y-3">
-      <% for (let review of product.reviews) { %>
-      <div class="flex flex-row">
-        <p class="text-2xl font-semibold border-b border-gray-500 mr-2">
-          <i class="fa-solid fa-user mr-2"></i><%= review.user ?
-          review.user.username : 'Anonymous' %>
-        </p>
 
-        <p class="starability-result ml-2" data-rating="<%= review.rating %>">
-          Rated: <%= review.rating %>stars
+    <% for(let review of product.reviews) { %>
+    <figure class="max-w-full mb-3">
+      <figcaption class="flex items-center mt-2 space-x-3 rtl:space-x-reverse">
+        <img
+          class="w-6 h-6 rounded-full"
+          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+          alt="profile picture"
+        />
+        <div
+          class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700"
+        >
+          <cite class="pe-3 font-xl text-gray-900 dark:text-white"
+            ><%= review.user ? review.user.username : 'i-mart user' %></cite
+          >
+        </div>
+      </figcaption>
+      <div
+        class="flex items-center mb-2 starability-result ml-2"
+        data-rating="<%= review.rating %>"
+      ></div>
+      <blockquote>
+        <p class="text- font-md text-gray-900 dark:text-white">
+          "<%= review.comment %>"
         </p>
-      </div>
-      <p class="text-gray-500 text-lg">
-        <i class="fa-solid fa-pen-to-square mr-2"></i><%= review.comment %>
-      </p>
-      <% } %>
-    </div>
+      </blockquote>
+    </figure>
+    <% } %>
   </div>
 </div>

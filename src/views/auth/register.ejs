@@ -1,76 +1,74 @@
 <% layout('layouts/boilerplate') -%> <%- include('../partials/flash') %>
 
-<div class="flex items-center justify-center min-h-screen bg-white mt-8">
-  <form action="/api/user/register" method="POST">
-    <div
-      class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
-    >
-      <div class="flex flex-col justify-center p-8 md:p-14">
-        <span class="mb-3 text-[#4f772d] text-3xl font-bold"
+<div class="flex items-center justify-center min-h-screen bg-white p-6">
+  <div class="w-full sm:w-[30%] p-6 mt-8 mx-auto shadow-xl rounded-md">
+    <form action="/api/user/register" method="POST">
+      <div class="flex flex-col justify-center border-b">
+        <span class="mb-3 text-[#3a5a40] text-3xl font-bold"
           >Create Account</span
         >
-        <span class="font-light text-[#a7c957] mb-4"
-          >Please enter your details</span
-        >
-        <hr />
-        <div class="py-4">
-          <label for="username"></label>
-          <input
-            type="text"
-            class="w-full p-2 border border-[#31572c] rounded-sm placeholder:font-light placeholder:text-[#a7c957]"
-            placeholder="Enter your name"
-            name="username"
-            id="username"
-            required
-          />
+        <span class="font-medium text-[#3a5a40] mb-4">
+          Please enter your details
+        </span>
+      </div>
+      <div class="py-4">
+        <label for="username"></label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+      <div class="py-4">
+        <label for="email"></label>
+        <input
+          type="email"
+          class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+          placeholder="Enter your email address"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+      <div class="py-4">
+        <label for="password"></label>
+        <input
+          type="password"
+          class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+          placeholder="Enter your password"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <div class="flex justify-start w-full py-2 mb-2">
+        <div class="mr-5">
+          <input type="radio" name="role" id="buyer" value="buyer" checked />
+          <span class="text-md text-[#31572c]">Buyer</span>
         </div>
-        <div class="py-4">
-          <label for="email"></label>
-          <input
-            type="email"
-            class="w-full p-2 border border-[#31572c] rounded-sm placeholder:font-light placeholder:text-[#a7c957]"
-            placeholder="Enter your email address"
-            name="email"
-            id="email"
-            required
-          />
-        </div>
-        <div class="py-4">
-          <label for="password"></label>
-          <input
-            type="password"
-            class="w-full p-2 border border-[#31572c] rounded-sm placeholder:font-light placeholder:text-[#a7c957]"
-            placeholder="Enter your password"
-            name="password"
-            id="password"
-            required
-          />
-        </div>
-        <div class="flex justify-start w-full py-2 mb-2">
-          <div class="mr-5">
-            <input type="radio" name="role" id="buyer" value="buyer" checked />
-            <span class="text-md text-[#31572c]">Buyer</span>
-          </div>
-          <div class="mr-5">
-            <input type="radio" name="role" id="seller" value="seller" />
-            <span class="text-md text-[#31572c]">Seller</span>
-          </div>
-        </div>
-        <button
-          type="submit"
-          class="w-full bg-[#90a955] text-white font-bold p-2 mb-6 rounded-sm hover:bg-white hover:text-[#4f772d] hover:border hover:border-[#31572c]"
-        >
-          Sign Up
-        </button>
-        <div class="text-center text-[#386641]">
-          Already have an account?
-          <a
-            href="/api/user/login"
-            class="font-bold text-[#4f772d] hover:text-black"
-            >Login</a
-          >
+        <div class="mr-5">
+          <input type="radio" name="role" id="seller" value="seller" />
+          <span class="text-md text-[#31572c]">Seller</span>
         </div>
       </div>
-    </div>
-  </form>
+      <button
+        type="submit"
+        class="w-full px-6 py-2 text-white font-[500] bg-blue-600 hover:bg-blue-700 rounded-md border focus:border-blue-800"
+      >
+        Sign Up
+      </button>
+
+      <div class="text-gray-600 py-4">
+        Already have an account?
+        <a
+          href="/api/user/login"
+          class="text-red-600 text-[400] hover:text-blue-600"
+          >Login</a
+        >
+      </div>
+    </form>
+  </div>
 </div>

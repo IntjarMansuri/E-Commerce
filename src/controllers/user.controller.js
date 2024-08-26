@@ -1,4 +1,5 @@
 import { User } from "../models/user.model.js";
+import { ApiError } from "../utils/ApiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 const signup = (req, res) => {
@@ -12,6 +13,11 @@ const login = (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, role, password } = req.body;
 
+  if ([username, email, role, password].some((field) => field?.trim() === "")) {
+    req.flash("reject", "All field are required!");
+    return res.redirect("/api/user/register");
+  }
+
   if (password.length < 5) {
     req.flash("reject", "Password must be at least 5 characters long!");
     return res.redirect("/api/user/register");
@@ -24,11 +30,14 @@ const registerUser = asyncHandler(async (req, res) => {
     return res.redirect("/api/user/register");
   }
 
-  const user = new User({ username, email, role });
+  const user = await User.create({
+    username,
+    email,
+    role,
+    password,
+  });
 
-  await User.register(user, password);
-
-  req.flash("success", "Welcome You're all set to explore.");
+  req.flash("success", `Welcome ${user.username} You're all set to explore!`);
   res.redirect("/api/user/login");
 });
 

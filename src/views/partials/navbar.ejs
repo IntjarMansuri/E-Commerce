@@ -1,95 +1,310 @@
-<nav class="fixed top-0 left-0 right-0 shadow-md md:flex md:items-center z-10">
+<nav
+  class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 shadow-md"
+>
   <div
-    class="container mx-auto flex justify-between items-center py-2 px-10 bg-[#90a955]"
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1"
   >
-    <a href="/api/products" class="flex items-center rounded-full p-2 bg-white">
-      <img src="/images/logo.png" alt="Logo" class="w-8 h-8" />
-      <p class="text-2xl text-[#90a955] font-bold mx-2 hidden sm:block">
-        SHOPIFY
-      </p>
-    </a>
-
-    <% if (currentUser) { %>
-    <div class="mx-2 my-2 text-[#4f772d]">
-      <p class="lg:text-lg sm:text-sm font-bold">
-        Hello, <%= currentUser.username %>
-      </p>
-    </div>
-    <% } %>
-
-    <span class="text-3xl cursor-pointer mx-2 md:hidden block">
-      <i
-        class="fa-solid fa-bars text-[#4f772d]"
-        name="menu"
-        onclick="Menu(this)"
-      ></i>
-    </span>
-
-    <ul
-      class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-[#90a955] right-0 md:w-auto md:py-0 py-4 md:opacity-100 opacity-0 top-[-400px]"
+    <a
+      href="/api/products"
+      class="flex items-center space-x-3 rtl:space-x-reverse rounded-full"
     >
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/" class="text-lg font-bold"> Home </a>
-      </li>
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/products" class="text-lg font-bold"> Products </a>
-      </li>
-
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/about" class="text-lg font-bold">About Us</a>
-      </li>
-
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/about#contact-us" class="text-lg font-bold">Contact Us</a>
-      </li>
-
-      <% if (currentUser && currentUser.role === 'seller') { %>
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/products/new" class="text-lg font-bold">Add Product</a>
-      </li>
-      <% } %> <% if (!currentUser) { %>
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/user/login" class="text-lg font-bold">Login</a>
-      </li>
-      <% } else { %>
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/user/cart" class="text-lg font-bold"
-          >Cart <i class="fa-solid fa-cart-shopping"></i>
-        </a>
-      </li>
-      <li
-        class="mx-4 my-6 md:my-0 px-2 py-1 rounded-md border border-white text-white hover:bg-white hover:text-[#90a955]"
-      >
-        <a href="/api/user/logout" class="text-lg font-bold">Logout</a>
-      </li>
+      <img src="/images/i-mart-logo.png" class="h-14" alt="i-mart Logo" />
+      <% if (currentUser) { %>
+      <span
+        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+        >Hello, <%= currentUser.username %>
+      </span>
       <% } %>
-    </ul>
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <% if (!currentUser) { %>
+      <button
+        type="button"
+        class="text-white bg-[#fb8500] hover:bg-[#3a5a40] border focus:border-[#3a5a40]/50 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        id="loginButton"
+      >
+        Login
+      </button>
+      <% } else { %>
+      <button
+        id="dropdownNavbarLink"
+        data-dropdown-toggle="dropdownNavbar"
+        class="relative flex items-center justify-between text-white bg-[#fb8500] hover:bg-[#3a5a40] border focus:border-[#3a5a40]/50 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Profile
+        <svg
+          class="w-2.5 h-2.5 ms-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <!-- Dropdown menu -->
+      <div
+        id="dropdownNavbar"
+        class="absolute z-100 hidden font-normal bg-white divide-y divide-gray-100 rounded-md shadow w-44 dark:bg-gray-700 dark:divide-gray-600 mt-[3rem]"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-400"
+          aria-labelledby="dropdownLargeButton"
+        >
+          <% if (currentUser && currentUser.role === 'seller') { %>
+          <li>
+            <a
+              href="/api/category"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >Category</a
+            >
+          </li>
+          <li>
+            <a
+              href="/api/products/new"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >Add Product</a
+            >
+          </li>
+          <% } %>
+          <li>
+            <a
+              href="#"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >Earnings</a
+            >
+          </li>
+        </ul>
+        <div class="">
+          <form action="/api/user/logout" method="GET" id="logoutForm">
+            <button
+              type="submit"
+              class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-red-500 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white rounded-b-md"
+            >
+              Sign out
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <% } %>
+      <button
+        data-collapse-toggle="navbar-sticky"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-sticky"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="navbar-sticky"
+    >
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+      >
+        <li>
+          <a
+            href="/"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="/api/products"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            href="/api/about"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="/api/about#contact-us"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Contact</a
+          >
+        </li>
+        <% if (currentUser) { %>
+        <li>
+          <a
+            href="/api/user/cart"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 relative"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              version="1.1"
+              width="28"
+              height="28"
+              viewBox="0 0 256 256"
+              xml:space="preserve"
+            >
+              <defs></defs>
+              <g
+                style="
+                  stroke: none;
+                  stroke-width: 0;
+                  stroke-dasharray: none;
+                  stroke-linecap: butt;
+                  stroke-linejoin: miter;
+                  stroke-miterlimit: 10;
+                  fill: none;
+                  fill-rule: nonzero;
+                  opacity: 1;
+                "
+                transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+              >
+                <path
+                  d="M 24.158 57.091 h 54.898 c 2.293 0 4.313 -1.509 4.964 -3.709 l 5.841 -19.759 c 0.633 -2.141 -0.972 -4.289 -3.204 -4.289 H 16.95 L 24.158 57.091 z"
+                  style="
+                    stroke: none;
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: butt;
+                    stroke-linejoin: miter;
+                    stroke-miterlimit: 10;
+                    fill: rgb(64, 89, 107);
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  transform=" matrix(1 0 0 1 0 0) "
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M 79.585 69.894 H 27.091 c -0.687 0 -1.287 -0.464 -1.46 -1.129 L 14.404 25.529 c -0.421 -1.62 -1.883 -2.751 -3.557 -2.751 H 1.508 C 0.675 22.778 0 22.103 0 21.27 s 0.675 -1.508 1.508 -1.508 h 9.339 c 3.048 0 5.711 2.06 6.476 5.01 l 10.935 42.106 h 51.327 c 0.833 0 1.508 0.676 1.508 1.508 C 81.093 69.219 80.417 69.894 79.585 69.894 z"
+                  style="
+                    stroke: none;
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: butt;
+                    stroke-linejoin: miter;
+                    stroke-miterlimit: 10;
+                    fill: rgb(64, 89, 107);
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  transform=" matrix(1 0 0 1 0 0) "
+                  stroke-linecap="round"
+                />
+                <circle
+                  cx="36.176"
+                  cy="80.436"
+                  r="6.536"
+                  style="
+                    stroke: none;
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: butt;
+                    stroke-linejoin: miter;
+                    stroke-miterlimit: 10;
+                    fill: rgb(64, 89, 107);
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  transform="  matrix(1 0 0 1 0 0) "
+                />
+                <circle
+                  cx="69.15599999999999"
+                  cy="80.436"
+                  r="6.536"
+                  style="
+                    stroke: none;
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: butt;
+                    stroke-linejoin: miter;
+                    stroke-miterlimit: 10;
+                    fill: rgb(64, 89, 107);
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  transform="  matrix(1 0 0 1 0 0) "
+                />
+                <path
+                  d="M 52.063 35.406 l -0.487 -0.271 c -3.791 -2.115 -9.698 -7.086 -12.154 -10.229 c -5.174 -6.624 -6.25 -14.46 -2.557 -18.632 c 1.767 -1.996 4.247 -3.146 6.985 -3.241 c 2.893 -0.105 5.773 1.001 8.213 3.115 c 2.44 -2.116 5.34 -3.218 8.212 -3.115 c 2.738 0.095 5.219 1.246 6.985 3.241 l 0 0 c 3.692 4.171 2.617 12.007 -2.557 18.632 c -2.457 3.144 -8.363 8.115 -12.153 10.229 L 52.063 35.406 z"
+                  style="
+                    stroke: none;
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: butt;
+                    stroke-linejoin: miter;
+                    stroke-miterlimit: 10;
+                    fill: rgb(231, 78, 58);
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  transform=" matrix(1 0 0 1 0 0) "
+                  stroke-linecap="round"
+                />
+              </g>
+            </svg>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
   </div>
 </nav>
 
 <script>
-  function Menu(e) {
-    let list = document.querySelector("ul");
-    e.name === "menu"
-      ? ((e.name = "close"),
-        list.classList.add("top-[80px]"),
-        list.classList.add("opacity-100"))
-      : ((e.name = "menu"),
-        list.classList.remove("top-[80px]"),
-        list.classList.remove("opacity-100"));
-  }
+  // Side Bar
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.querySelector("[data-collapse-toggle]");
+    const menu = document.getElementById("navbar-sticky");
+
+    toggleButton.addEventListener("click", function () {
+      menu.classList.toggle("hidden");
+    });
+  });
+
+  // Dropdown
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownButton = document.querySelector("[data-dropdown-toggle]");
+    const dropdown = document.getElementById("dropdownNavbar");
+
+    dropdownButton.addEventListener("click", function () {
+      dropdown.classList.toggle("hidden");
+    });
+
+    // Show dropdown on hover
+    dropdownButton.addEventListener("mouseover", function () {
+      dropdown.classList.remove("hidden");
+    });
+
+    // Hide dropdown when mouse leaves dropdown area
+    dropdown.addEventListener("mouseleave", function () {
+      dropdown.classList.add("hidden");
+    });
+  });
 </script>

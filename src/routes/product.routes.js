@@ -4,7 +4,6 @@ import {
   addProduct,
   newProduct,
   showProduct,
-  productByCategory,
   editProduct,
   updateProduct,
   deleteProduct,
@@ -23,7 +22,6 @@ router
   .route("/")
   .get(getAllProducts)
   .post(validateProduct, isSeller, addProduct);
-router.route("/category/:category").get(productByCategory);
 router.route("/new").get(isLoggedIn, isSeller, newProduct);
 router
   .route("/:id")

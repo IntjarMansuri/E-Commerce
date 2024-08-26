@@ -24,16 +24,8 @@ const productSchema = new Schema(
       default: 0,
     },
     category: {
-      type: String,
-      required: true,
-      enum: [
-        "clothes",
-        "electronics",
-        "smartphones",
-        "beauty",
-        "kitchen",
-        "shoes",
-      ],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
     },
 
     images: {

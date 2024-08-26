@@ -1,3 +1,4 @@
+import { Category } from "../models/category.model.js";
 import { Product } from "../models/product.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
@@ -8,53 +9,50 @@ const getAllProducts = asyncHandler(async (req, res) => {
     const products = await Product.find({});
     res.render("products/index", { products });
   } catch (e) {
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
-    await Product.create({ ...req.body, author: req.user._id });
+    const { name, description, price, maxRetailPrice, category, images } =
+      req.body;
 
-    req.flash("success", "Product added succesfully!");
-    res.redirect("/api/products");
-  } catch (e) {
-    res.render("error", { err: e.message });
-  }
-});
-
-const productByCategory = asyncHandler(async (req, res) => {
-  try {
-    const category = req.params.category.toLowerCase();
-
-    const allowedCategories = [
-      "clothes",
-      "electronics",
-      "smartphones",
-      "beauty",
-      "kitchen",
-      "shoes",
-    ];
-
-    if (!allowedCategories.includes(category)) {
-      throw new ApiError(404, "Invalid category type");
+    if (
+      !name ||
+      !description ||
+      !price ||
+      !maxRetailPrice ||
+      !category ||
+      !images
+    ) {
+      req.flash("reject", "All fields are required");
+      return res.redirect("/api/products/new");
     }
 
-    const data = await Product.find({ category });
+    await Product.create({
+      name,
+      description,
+      price,
+      maxRetailPrice,
+      category,
+      images,
+      author: req.user._id,
+    });
 
-    res
-      .status(201)
-      .json(new ApiResponse(200, data, "Product fetched successfully!"));
+    req.flash("success", "Product added successfully!");
+    res.redirect("/api/products");
   } catch (e) {
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
 const newProduct = asyncHandler(async (req, res) => {
   try {
-    res.render("products/new");
+    const categories = await Category.find();
+    res.render("products/new", { categories });
   } catch (e) {
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
@@ -69,17 +67,20 @@ const showProduct = asyncHandler(async (req, res) => {
     }
     res.render("products/show", { product });
   } catch (e) {
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
 const editProduct = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const product = await Product.findById(id);
-    res.render("products/edit", { product });
+    const product = await Product.findById(id).populate("category");
+
+    const categories = await Category.find({});
+
+    res.render("products/edit", { product, categories });
   } catch (e) {
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
@@ -91,7 +92,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.redirect(`/api/products/${id}`);
   } catch (e) {
     req.flash("reject", "Error while product updated!");
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
@@ -103,14 +104,13 @@ const deleteProduct = asyncHandler(async (req, res) => {
     req.flash("success", "Product deleted successfully!");
     res.redirect("/api/products");
   } catch (e) {
-    res.render("error", { err: e.message });
+    res.render("error", { error: e.message });
   }
 });
 
 export {
   getAllProducts,
   addProduct,
-  productByCategory,
   newProduct,
   showProduct,
   editProduct,

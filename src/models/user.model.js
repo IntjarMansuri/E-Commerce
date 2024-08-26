@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import passportLocalMongoose from "passport-local-mongoose";
 
 const userSchema = new Schema(
@@ -15,7 +17,6 @@ const userSchema = new Schema(
       lowercase: true,
       required: true,
     },
-
     role: {
       type: String,
       enum: ["buyer", "seller"],

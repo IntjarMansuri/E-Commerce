@@ -14,6 +14,7 @@ async function likeButton(productId, btn) {
       btn.classList.add("far");
     }
   } catch (e) {
+    // res.render("error", { error: e.message });
     console.log("Error while liking product");
     window.location.replace("/api/user/login");
   }

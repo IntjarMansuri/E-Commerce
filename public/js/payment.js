@@ -15,9 +15,9 @@ async function makeOrder(amount) {
       key: "rzp_test_yiiqTBzCgzFKkF",
       amount: order.amount,
       currency: "INR",
-      name: "Shopify E-Commerce",
+      name: "I-Mart shopping store",
       description: "Test Transaction",
-      image: "/images/logo.png",
+      image: "/images/i-mart-logo.png",
       order_id: order.id,
       callback_url: "http://localhost:7000/api/payment/payment-verify",
       notes: {

@@ -55,6 +55,7 @@ app.get("/", (req, res) => {
 
 // routes import
 import productRouter from "./routes/product.routes.js";
+import categoryRouter from "./routes/category.routes.js";
 import reviewRouter from "./routes/review.routes.js";
 import userRouter from "./routes/user.routes.js";
 import cartRouter from "./routes/cart.routes.js";
@@ -63,6 +64,7 @@ import apiRoutes from "./routes/api.routes.js";
 
 // routes declaration
 app.use("/api/products", productRouter);
+app.use("/api/category", categoryRouter);
 app.use("/api/products", reviewRouter);
 app.use("/api/user", userRouter);
 app.use("/api/user", cartRouter);

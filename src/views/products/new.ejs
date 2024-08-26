@@ -1,95 +1,120 @@
-<% layout('layouts/boilerplate') -%>
+<% layout('layouts/boilerplate') -%> <% include('../partials/flash') %>
 
-<div class="flex flex-col justify-center items-center mt-20">
-  <form action="/api/products" method="POST">
-    <div
-      class="relative flex flex-col m-2 space-y-2 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-1"
-    >
-      <div class="flex flex-col w-full justify-center p-8 md:p-14">
-        <span class="mb-2 mr-20 text-2xl font-bold">Add New Product</span>
-        <span class="font-light text-gray-400 mb-2">It's quick and easy</span>
-        <hr />
-        <div class="py-2">
-          <p class="mb-1 font-semibold">Product Name</p>
+<div class="bg-[#e9ecef] mt-16">
+  <div class="w-full mx-auto p-6">
+    <div class="flex flex-col justify-center items-center space-y-2">
+      <h2 class="text-2xl font-[500] text-gray-700 text-center pt-2">
+        Product Information
+      </h2>
+      <p class="text-md font[400] text-gray-700 mb-2">
+        Information to help define a product
+      </p>
+    </div>
+    <div class="mt-2 p-6 bg-white shadow-md">
+      <form action="/api/products" method="POST">
+        <div class="mb-4">
+          <label for="title" class="block text-md font-[400] text-gray-700 mb-1"
+            >Product Name</label
+          >
           <input
             type="text"
-            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
             id="name"
             name="name"
+            class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
             placeholder="Enter product name here"
             required
           />
         </div>
-        <div class="py-2">
-          <p class="mb-1 font-semibold">Product Description</p>
-          <input
+        <div class="mb-4">
+          <label for="title" class="block text-md font-[400] text-gray-700 mb-1"
+            >Product Description</label
+          >
+          <textarea
             type="text"
             id="description"
             name="description"
-            placeholder="Enter Product Description"
-            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+            placeholder="Enter product description here"
             required
-          />
+          >
+          </textarea>
         </div>
-        <div class="py-2">
-          <p class="mb-1 font-semibold">Price</p>
-          <input
-            type="text"
-            id="price"
-            name="price"
-            placeholder="Enter Product Price"
-            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
-            required
-          />
+        <div class="w-full sm:flex sm:flex-row justify-between">
+          <div class="sm:flex-1 sm:mr-2 mb-4">
+            <label
+              for="price"
+              class="block text-md font-[400] text-gray-700 mb-1"
+              >Price</label
+            >
+            <input
+              type="text"
+              id="price"
+              name="price"
+              class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+              placeholder="Enter amount"
+              required
+            />
+          </div>
+          <div class="sm:flex-1 sm:ml-2 mb-4">
+            <label
+              for="maxRetailPrice"
+              class="block text-md font-[400] text-gray-700 mb-1"
+              >Max Retail Price (MRP)</label
+            >
+            <input
+              type="text"
+              id="maxRetailPrice"
+              name="maxRetailPrice"
+              class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+              placeholder="Enter amount"
+              required
+            />
+          </div>
         </div>
-        <div class="py-2">
-          <p class="mb-1 font-semibold">Max Retail Price</p>
-          <input
-            type="text"
-            id="maxRetailPrice"
-            name="maxRetailPrice"
-            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
-            placeholder="Enter Max Retail Price"
-            required
-          />
-        </div>
-        <div class="py-2">
-          <p class="mb-1 font-semibold">Images</p>
+        <div class="mb-4">
+          <label
+            for="images"
+            class="block text-md font-[400] text-gray-700 mb-1"
+            >Product Image</label
+          >
           <input
             type="text"
             id="images"
             name="images"
-            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
-            placeholder="Enter Images Url"
+            class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
+            placeholder="Enter product images url"
             required
           />
         </div>
-        <div class="py-2">
-          <p class="mb-1 font-semibold">Select Category</p>
+        <div class="mb-4">
+          <label
+            For="category"
+            class="block text-md font-[400] text-gray-700 mb-1"
+          >
+            Select a Category:
+          </label>
+
           <select
-            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
             id="category"
             name="category"
-            required
+            class="w-full p-2 text-gray-800 border border-gray-200 hover:border-gray-500 outline-none focus:border-blue-600 rounded-md"
           >
-            <option value="clothes">Clothes</option>
-            <option value="electronics">Electronics</option>
-            <option value="smartphones">Smartphones</option>
-            <option value="beauty">Beauty</option>
-            <option value="kitchen">Kitchen</option>
-            <option value="shoes">Shoes</option>
+            <option value="">Select Category</option>
+
+            <% for( let category of categories) { %>
+            <option value="<%= category._id %>"><%= category.title %></option>
+            <% } %>
           </select>
         </div>
-
-        <div class="py-2">
+        <div class="flex justify-center">
           <button
             type="submit"
-            class="w-full bg-black text-white font-bold p-2 rounded-lg hover:bg-white hover:text-black hover:border hover:border-gray-300"
+            class="px-6 py-2 text-white font-[500] bg-blue-600 hover:bg-blue-700 rounded-md border focus:border-blue-800"
           >
             Add Product
           </button>
         </div>
-      </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>

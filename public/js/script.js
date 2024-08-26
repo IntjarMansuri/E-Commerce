@@ -19,3 +19,13 @@ alertElements.forEach((alertElement) => {
     });
   }
 });
+
+// Login Button
+document.getElementById("loginButton").addEventListener("click", function () {
+  window.location.href = "/api/user/login";
+});
+
+// Logout Button
+document.getElementById("logoutButton").addEventListener("click", function () {
+  window.location.href = "/api/user/logout";
+});
