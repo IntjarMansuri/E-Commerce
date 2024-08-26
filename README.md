@@ -88,9 +88,5 @@ The project follows the MVC (Model-View-Controller) architecture for organized a
 ### Payment
 ![Screenshot (129)](https://github.com/user-attachments/assets/46bf05af-6b0f-4470-b75c-51da4a7e296a)
 
-
-### Show Page
-![Screenshot-6](https://github.com/IntjarMansuri/Shopify-Ecommerce-Web-Application/assets/139264242/15969889-f1a6-4794-8c95-29cdf124b9a2)
-
 ---
 Feel free to ask if you need any further changes or additions!
