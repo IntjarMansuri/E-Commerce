@@ -74,19 +74,19 @@ The project follows the MVC (Model-View-Controller) architecture for organized a
 - During checkout, users will be prompted to enter their payment details securely.
 
 ## Screenshots
-
 ### Home Page
-![Screenshot (123)](https://github.com/user-attachments/assets/3d65f0d9-3d8a-423e-abaa-15a73deae0df)
+![Screenshot (123)](https://github.com/user-attachments/assets/d306727b-6055-4e2c-a602-e59e4059a194)
 
 ### Products Page
-![Screenshot (124)](https://github.com/user-attachments/assets/9a9d55a5-a7d9-4232-a149-333908d21a6a)
+![Screenshot (124)](https://github.com/user-attachments/assets/aea78dd1-f16a-4ce8-8444-6282e0e42167)
 
 ### Show Page
-![Screenshot (125)](https://github.com/user-attachments/assets/fe59b212-dc9c-4d51-8362-53c62d6dfd8b)
-![Screenshot (126)](https://github.com/user-attachments/assets/1bb0df09-4734-493a-84cb-5a598d29778e)
+![Screenshot (125)](https://github.com/user-attachments/assets/3c09fca5-4543-440b-b169-9dbafbe117d7)
+![Screenshot (126)](https://github.com/user-attachments/assets/1e2dddb2-9a48-4ff9-b8ac-68b4ed7d0ab1)
 
 ### Payment
-![Screenshot (129)](https://github.com/user-attachments/assets/46bf05af-6b0f-4470-b75c-51da4a7e296a)
+![Screenshot (129)](https://github.com/user-attachments/assets/4ced326f-c1a5-4514-b3e0-89818bea53c3)
+
 
 ---
 Feel free to ask if you need any further changes or additions!
