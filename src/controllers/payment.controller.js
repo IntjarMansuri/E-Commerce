@@ -53,9 +53,9 @@ const paymentVerify = asyncHandler(async (req, res) => {
     );
 
     // res.json({ success: true, msg: "Payment Successfull" });
-    res.redirect("back");
+    return res.redirect("/api/products");
   } else {
-    res.redirect("back");
+    return res.redirect("back");
     // res.json({ success: false, msg: "Not a valid payment!" });
   }
 });

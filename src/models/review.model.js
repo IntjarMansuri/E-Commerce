@@ -20,17 +20,4 @@ const reviewSchema = new Schema(
   { timestamps: true }
 );
 
-// Populate user field with username
-reviewSchema.methods.toJSON = function () {
-  const review = this;
-  const reviewObject = review.toObject();
-
-  // Add username from the populated user object
-  if (reviewObject.user.username) {
-    reviewObject.user = reviewObject.user.username;
-  }
-
-  return reviewObject;
-};
-
 export const Review = mongoose.model("Review", reviewSchema);

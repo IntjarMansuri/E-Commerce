@@ -7,6 +7,11 @@ const addCart = asyncHandler(async (req, res) => {
 
   const user = await User.findById(userId);
 
+  if (!user) {
+    req.flash("error", "User not found");
+    return res.redirect("back");
+  }
+
   const cartItem = user.cart.find((item) => {
     return item.productId.toString() === productId;
   });

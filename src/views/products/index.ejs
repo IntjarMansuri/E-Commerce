@@ -1,24 +1,24 @@
 <% layout("layouts/boilerplate") %> <%- include('../partials/flash') %>
 
-<div class="md:mx-auto px-6 py-10 mt-16 bg-white">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+<div class="md:mx-auto px-2 md:px-8 py-10 mt-10 bg-white">
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-10">
     <% for (let product of products) { %>
 
     <!-- Card Start Here -->
     <div
-      class="flex flex-col items-center px-4 py-2 bg-white rounded-lg shadow-md transition-all duration-300 hover:transform hover:-translate-y-2 relative border-t"
+      class="flex flex-col items-center px-2 py-2 bg-white rounded-lg shadow-md transition-all duration-300 hover:transform hover:-translate-y-2 relative border-t"
     >
       <div class="btn absolute top-2 right-2">
         <% if (currentUser && currentUser.wishlist.includes(product._id)) { %>
 
         <i
-          class="fas fa-heart text-2xl like-button cursor-pointer"
+          class="fas fa-heart text-md md:text-2xl like-button cursor-pointer"
           product-id="<%= product._id %>"
         ></i>
 
         <% } else { %>
         <i
-          class="far fa-heart text-2xl like-button cursor-pointer"
+          class="far fa-heart text-md md:text-2xl like-button cursor-pointer"
           product-id="<%= product._id %>"
         ></i>
         <% } %>
@@ -26,14 +26,13 @@
       <img
         src="<%= product.images[0] %>"
         alt="<%= product.name %>"
-        class="card w-fixed h-fixed object-cover"
-        style="max-width: 280px; max-height: 220px"
+        class="card max-w-full h-[120px] md:h-[220px]"
         data-product-id="<%= product._id %>"
       />
       <!-- Ratings Start Here -->
-      <div class="flex items-center border p-1 mt-1">
+      <div class="flex items-center border p-[1px] sm:p-1 mt-1">
         <svg
-          class="w-4 h-4 text-yellow-300 me-1"
+          class="w-3 h-3 md:w-4 md:h-4 text-yellow-300"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -43,34 +42,38 @@
             d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
           />
         </svg>
-        <p class="ms-2 text-sm font-bold text-gray-900 dark:text-white">
+        <p class="ms-2 text-xs md:text-base font-semibold text-gray-900">
           <%= product.avgRating %>
         </p>
-        <span
-          class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"
-        ></span>
-        <p class="text-sm font-medium text-gray-900 dark:text-white">
+        <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"></span>
+        <p class="text-xs md:text-sm font-semibold text-gray-900">
           <%= product.reviews.length %> Ratings
         </p>
       </div>
+
       <!-- Ratings End Here -->
 
-      <h2 class="text-lg font-bold text-gray-700 mt-1"><%= product.name %></h2>
+      <h2 class="text-xs md:text-lg font-[600] text-gray-700 mt-1">
+        <%= product.name %>
+      </h2>
 
-      <p class="text-gray-500 text-base mt-2 overflow-hidden line-clamp-2">
+      <p
+        class="text-xs md:text-base text-gray-500 mt-[1px] md:mt-2 overflow-hidden line-clamp-1 md:line-clamp-2"
+      >
         <%= product.description %>
       </p>
-      <div class="mt-auto mt-2">
-        <span class="text-[#212529] text-xl font-semibold"
+      <div class="mt-auto md:mt-2">
+        <span class="text-[#212529] text-xs md:text-xl font-[600]"
           >₹<%= product.price %> <% if (product.maxRetailPrice &&
           product.maxRetailPrice > product.price) { %><span
-            class="text-[#6c757d] font-semibold text-sm"
+            class="text-[#6c757d] font-[600] text-xs md:text-sm"
             >M.R.P.
           </span>
-          <span class="text-[#6c757d] font-semibold text-sm line-through"
+          <span
+            class="text-[#6c757d] font-[600] text-xs md:text-sm line-through"
             >₹<%= product.maxRetailPrice %></span
           >
-          <span class="text-[#e5383b] text-lg font-semibold"
+          <span class="text-[#e5383b] text-xs md:text-lg font-[600]"
             ><%= Math.round(((product.maxRetailPrice - product.price) /
             product.maxRetailPrice) * 100) %>% off
           </span>

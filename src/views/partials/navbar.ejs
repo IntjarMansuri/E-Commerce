@@ -1,17 +1,17 @@
 <nav
-  class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600 shadow-md"
+  class="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 shadow-md pe-2"
 >
   <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1"
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto"
   >
     <a
       href="/api/products"
       class="flex items-center space-x-3 rtl:space-x-reverse rounded-full"
     >
-      <img src="/images/i-mart-logo.png" class="h-14" alt="i-mart Logo" />
+      <img src="/images/i-mart-logo.png" class="h-14" alt="Logo" />
       <% if (currentUser) { %>
       <span
-        class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+        class="self-center text-md: sm:text-xl font-semibold whitespace-nowrap"
         >Hello, <%= currentUser.username %>
       </span>
       <% } %>
@@ -20,7 +20,7 @@
       <% if (!currentUser) { %>
       <button
         type="button"
-        class="text-white bg-[#fb8500] hover:bg-[#3a5a40] border focus:border-[#3a5a40]/50 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-white bg-[#fb8500] hover:bg-[#fb9900] focus:outline-none focus:ring-2 focus:ring-[#fb8500] font-medium rounded-md text-xs md:text-sm md:px-4 md:py-2 text-center"
         id="loginButton"
       >
         Login
@@ -29,7 +29,7 @@
       <button
         id="dropdownNavbarLink"
         data-dropdown-toggle="dropdownNavbar"
-        class="relative flex items-center justify-between text-white bg-[#fb8500] hover:bg-[#3a5a40] border focus:border-[#3a5a40]/50 font-medium rounded-md text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="relative flex items-center justify-between text-white bg-[#fb8500] hover:bg-[#fb9900] focus:outline-none focus:ring-2 focus:ring-[#fb8500] font-medium rounded-md text-xs md:text-sm px-2 py-0 md:px-4 md:py-2 text-center"
       >
         Profile
         <svg
@@ -51,33 +51,29 @@
       <!-- Dropdown menu -->
       <div
         id="dropdownNavbar"
-        class="absolute z-100 hidden font-normal bg-white divide-y divide-gray-100 rounded-md shadow w-44 dark:bg-gray-700 dark:divide-gray-600 mt-[3rem]"
+        class="absolute z-100 hidden font-normal bg-white divide-y divide-gray-100 rounded-md shadow w-50 mt-[3rem]"
       >
         <ul
-          class="py-2 text-sm text-gray-700 dark:text-gray-400"
+          class="py-2 text-sm text-gray-700"
           aria-labelledby="dropdownLargeButton"
         >
           <% if (currentUser && currentUser.role === 'seller') { %>
           <li>
-            <a
-              href="/api/category"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            <a href="/api/category" class="block px-4 py-2 hover:bg-gray-100"
               >Category</a
             >
           </li>
           <li>
             <a
               href="/api/products/new"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              class="block px-4 py-2 hover:bg-gray-100"
               >Add Product</a
             >
           </li>
           <% } %>
           <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Earnings</a
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+              >User Profile</a
             >
           </li>
         </ul>
@@ -85,7 +81,7 @@
           <form action="/api/user/logout" method="GET" id="logoutForm">
             <button
               type="submit"
-              class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-red-500 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white rounded-b-md"
+              class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-red-500 rounded-b-md"
             >
               Sign out
             </button>
@@ -97,7 +93,7 @@
       <button
         data-collapse-toggle="navbar-sticky"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="navbar-sticky"
         aria-expanded="false"
       >
@@ -124,12 +120,12 @@
       id="navbar-sticky"
     >
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white"
       >
         <li>
           <a
             href="/"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             aria-current="page"
             >Home</a
           >
@@ -137,21 +133,21 @@
         <li>
           <a
             href="/api/products"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >Products</a
           >
         </li>
         <li>
           <a
             href="/api/about"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >About</a
           >
         </li>
         <li>
           <a
             href="/api/about#contact-us"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"
             >Contact</a
           >
         </li>
@@ -159,7 +155,7 @@
         <li>
           <a
             href="/api/user/cart"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 relative"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 relative"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -295,11 +291,6 @@
 
     dropdownButton.addEventListener("click", function () {
       dropdown.classList.toggle("hidden");
-    });
-
-    // Show dropdown on hover
-    dropdownButton.addEventListener("mouseover", function () {
-      dropdown.classList.remove("hidden");
     });
 
     // Hide dropdown when mouse leaves dropdown area
