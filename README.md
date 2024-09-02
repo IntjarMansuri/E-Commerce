@@ -75,7 +75,7 @@ The project follows the MVC (Model-View-Controller) architecture for organized a
 
 ## Screenshots
 ### Home Page
-![Screenshot (123)](https://github.com/user-attachments/assets/d306727b-6055-4e2c-a602-e59e4059a194)
+![Screenshot (154)](https://github.com/user-attachments/assets/bc844cb4-f733-47e9-a94c-0e7e57b86b40)
 
 ### Products Page
 ![Screenshot (124)](https://github.com/user-attachments/assets/aea78dd1-f16a-4ce8-8444-6282e0e42167)
