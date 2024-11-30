@@ -1,4 +1,4 @@
-# I-MART Ecommerce store
+# I-MART Ecommerce Platform
 
 I-MART is an E-commerce web application that is fully responsive and designed to provide a seamless shopping experience. This application allows users to register as buyers or sellers, manage products, and perform secure transactions through an integrated payment gateway.
 
